@@ -4,4 +4,4 @@
 
 azure-functions==1.13.3
 azure-functions-durable==1.2.2
-azure-functions-durable
+pydantic==1.10.7

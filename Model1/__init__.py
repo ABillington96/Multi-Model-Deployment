@@ -7,12 +7,9 @@
 # - run pip install -r requirements.txt
 
 import logging
+import numpy as np
 
 
-def main(modelInput: list[int]) -> int:
+def main(modelInput: dict) -> int:
     logging.info(f"Model1 recieved: {modelInput}")
-    output = 1
-    for i in modelInput:
-        output*=i
-    logging.info(f"Model1 output: {output}")
-    return output
+    return 0
