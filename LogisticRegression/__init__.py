@@ -27,7 +27,7 @@ def load_model():
     """
     global MODEL
     MODEL = mlflow.sklearn.load_model(model_uri="models:/sk-learn-Logistic Regression-reg-model/Production")
-    logging.info("Successfully loaded model sk-learn-Random Forest-reg-model from MLFlow")
+    logging.info("Successfully loaded model sk-learn-Logistic Regression-reg-model from MLFlow")
 
 
 def main(modelInput: list[int]) -> int:

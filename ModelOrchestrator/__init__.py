@@ -42,7 +42,7 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
     # Preprocess data for the model
     try:
         # Convert the input dict to a numpy array compatible with the model
-        model_input = np.array(list(json_input.values())).reshape(1,-1)
+        model_input = list(json_input.values())
         logging.info(f"Model input: {model_input}")
     except Exception as e:
         logging.error(f"Failed preparing data for model, {e}")
@@ -51,21 +51,22 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
     # Definte a list of tasks to be completed
     tasks = []
     # Define the list of models
-    models = ["Model1"]#, "Model2", "Model3"]
+    models = ["RandomForest", "KNN", "LogisticRegression"]
 
     # Iterate through the list of models and start tasks for each one
     for model in models:
-        tasks.append(context.call_activity(model, json_input))
+        tasks.append(context.call_activity(model, model_input))
     # Get the results from the tasks
     results = yield context.task_all(tasks)
     logging.info(results)
-    # # Create a dictionary to store results
-    # overall_results = {}
-    # # Iterate over the list of models/results and populate output dict
-    # for i in range(0, len(models)):
-    #     overall_results[models[i]] = results[i]
+    # Create a dictionary to store results
+    overall_results = {}
+    # Iterate over the list of models/results and populate output dict
+    for model, result in zip(models, results):
+        overall_results[model] = result
+    logging.info(overall_results)
 
-    # return [overall_results]
-    return json_input
+    return overall_results
+    
 
 main = df.Orchestrator.create(orchestrator_function)

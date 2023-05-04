@@ -5,3 +5,4 @@
 azure-functions==1.13.3
 azure-functions-durable==1.2.2
 pydantic==1.10.7
+mlflow==2.3.1
