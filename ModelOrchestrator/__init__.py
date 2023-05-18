@@ -67,6 +67,6 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
     logging.info(overall_results)
 
     return overall_results
-    
 
+    
 main = df.Orchestrator.create(orchestrator_function)

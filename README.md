@@ -30,17 +30,6 @@ If you do not already managed MLFlow you can try it for free using the link [her
 databricks configure --token
 ```
 3) Enter the databricks host URL & Token when prompted
-4) Create a new MLFlow experiment
-    - Select the experiments tab (green)
-    - In the dropdown select the option *Create Blank Experiment* (blue)
-    - Give the experiment a name
-![](images/Create_Experiment.png)
-5) Copy the experiment location (green)
-![](images/Experiment_Location.png)
-6) Create an environment variable for the expierment being used for this demo:
-```
-set IRIS_EXPERIMENT=<Experiment Location>
-```
 If you have an MLFlow instance that is not managed by Databricks then you can simply ignore steps 1-3 and instead replace uri with that of your remote tracking servers. Replace line 8 in *Scripts/register_models.py* and line 12 in *Advanced/__init__.py* with:
 ```
 mlflow_uri = "<Remote URI>"
